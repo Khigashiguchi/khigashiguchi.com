@@ -1,4 +1,7 @@
 package usecase
 
-// ExportGetEntriesUseCase is export package fot testing.
+// ExportGetEntriesUseCase is exported package fot testing.
 type ExportGetEntriesUseCase = getEntriesUseCase
+
+// ExportPostEntriesUseCase is exported package for testing.
+type ExportPostEntriesUseCase = postEntriesUseCase

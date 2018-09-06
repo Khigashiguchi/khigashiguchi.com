@@ -14,14 +14,15 @@ type GetEntriesUseCase interface {
 }
 
 // GetEntriesUseCase represents the use case of getting entries.
-// It implements GetEntriesUseCaseImpl interface.
+// It implements GetEntriesUseCase interface.
 type getEntriesUseCase struct {
+	db        repository.DB
 	EntryRepo repository.IEntryRepository
 }
 
 // Run exec to the use case.
 func (u *getEntriesUseCase) Run() ([]entity.Entry, error) {
-	entries, err := u.EntryRepo.GetAll()
+	entries, err := u.EntryRepo.GetAll(u.db)
 	if err != nil {
 		logger.Error(fmt.Sprintf("failed to get entries entities: %#v", err))
 		return nil, err
@@ -30,6 +31,8 @@ func (u *getEntriesUseCase) Run() ([]entity.Entry, error) {
 }
 
 // NewGetEntriesUseCase create the use case of getting entries.
-func NewGetEntriesUseCase() GetEntriesUseCase {
-	return &getEntriesUseCase{EntryRepo: &repository.EntryRepository{}}
+func NewGetEntriesUseCase(db repository.DB) GetEntriesUseCase {
+	return &getEntriesUseCase{
+		db:        db,
+		EntryRepo: &repository.EntryRepository{}}
 }

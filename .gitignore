@@ -16,3 +16,7 @@
 
 # dep
 api/vendor
+
+# tmp
+api/tmp
+!api/tmp/empty

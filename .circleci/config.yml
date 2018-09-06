@@ -57,7 +57,7 @@ jobs:
       - run:
           name: goimports
           command: |
-            test -z "$(goimports -l $(find . -name "*.go" | grep -v /app/vendor/) | tee /dev/stderr)"
+            test -z "$(goimports -l $(find . -name "*.go" | grep -v /api/vendor/) | tee /dev/stderr)"
 
       - run:
           name: metalint
